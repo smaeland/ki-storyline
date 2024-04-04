@@ -3,7 +3,8 @@
 from openai import OpenAI
 import streamlit as st
 
-st.title("ChatGPT-like clone")
+st.title("Storybot :robot_face:")
+st.write("Velkommen til en veldig kul nettside")
 
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -12,11 +13,12 @@ client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 #     st.session_state["selected_model"] = "gpt-3.5-turbo"
 
 with st.sidebar:
-    st.title('Chatbot :sunglasses:')
-    st.write('Testing testing')
+    # st.title(':robot_face:')
+    # st.write('Min lille chatbot')
     
-    st.subheader('Models and parameters')
-    selected_model = st.sidebar.selectbox('Choose model', ['gpt-4', 'gpt-3.5-turbo'], key='selected_model')
+    # st.subheader('Innstillinger')
+    st.title('Innstillinger')
+    selected_model = st.sidebar.selectbox('Velg modell', ['gpt-4', 'gpt-3.5-turbo'], key='selected_model')
     #st.session_state['selected_model'] = selected_model
 
 
@@ -27,7 +29,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input("What is up?"):
+if prompt := st.chat_input("Still et spørsmål..."):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
