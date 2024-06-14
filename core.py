@@ -50,6 +50,20 @@ def setup_chatbot(init_prompt: str, course_list: list[str]):
         key='gpt_model'
     )
 
+    # Tips, currently does nothing :/
+    st.sidebar.header('Tips')
+    st.sidebar.write('Skriv inn en melding, eller bruk et av disse forslagene:')
+    suggestions = [
+        'Foreslå en omgivelse for storylinen',
+        'Foreslå karakterer som deltar',
+        'Foreslå en hendelse som driver historien fremover'
+    ]
+    for suggestion in suggestions:
+        if st.sidebar.button(
+            label=suggestion,
+        ):
+            pass
+
     # Course selector
     selected_course = st.selectbox(
         'Velg kurs',
